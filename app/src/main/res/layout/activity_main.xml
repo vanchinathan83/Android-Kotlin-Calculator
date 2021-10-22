@@ -258,6 +258,7 @@
             android:textColor="@color/black"
             android:backgroundTint="@color/orange"
             android:textSize="25dp"
+            android:onClick="onEqual"
             android:text="="
             />
 

@@ -20,6 +20,43 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    fun onEqual(view: View) {
+        var input = binding.input.text
+        var negativeInput = false
+        if(input.startsWith("-")){
+            negativeInput = true
+            input = input.substring(1)
+        }
+        var inputs = input.split("*","/","+", "-")
+        var left = inputs[0]
+        var right = inputs[1]
+        if(input.contains("*")){
+            var result = left.toDouble() * right.toDouble()
+            if(negativeInput){
+                result *=-1
+            }
+            binding.input.setText(result.toString())
+        }else if(input.contains("+")){
+            var result = left.toDouble() + right.toDouble()
+            if(negativeInput){
+                result = (-left.toDouble()) + right.toDouble()
+            }
+            binding.input.setText(result.toString())
+        }else if(input.contains("-")){
+            var result = left.toDouble() - right.toDouble()
+            if(negativeInput){
+                result = (-left.toDouble()) - right.toDouble()
+            }
+            binding.input.setText(result.toString())
+        }else if(input.contains("/")){
+            var result = left.toDouble() / right.toDouble()
+            if(negativeInput){
+                result = (-left.toDouble()) / right.toDouble()
+            }
+            binding.input.setText(result.toString())
+        }
+    }
+
     fun clear(view: View){
         binding.input.text = ""
         lastNumeric = false
